@@ -1,7 +1,7 @@
 {
   "name": "wap-final-project",
   "version": "1.0.0",
-  "description": "Rest API - Assignment 13",
+  "description": "Amazing Music Player Project",
   "main": "app.js",
   "scripts": {
     "start": "nodemon index.js",
