@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Website</title>
+    <link rel="stylesheet" href="../public/css/style.css" />
+    <link rel="shortcut icon" href="../public/images/favicon.ico" type="image/x-icon" />
+    <script src="https://kit.fontawesome.com/dd2e270553.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="main-container">
+        <div class="header">
+            <div class="logo">
+                <a href="">
+                    <img src="../public/images/musical-logo.png" alt="Logo" />
+                </a>
+            </div>
+            <div class="navbar">
+                <a href="http://"><button type="submit">Logout</button></a>
+            </div>
+        </div>
+
+        <div class="list-songs">
+            <h2>Song you may interest</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Release Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>NodeJS</td>
+                        <td>9.99</td>
+                        <td>8</td>
+                        <td><button class="add-btn"><i class="fa-solid fa-plus"></i></button></td>
+                    </tr>
+
+                    <tr>
+                        <td>React</td>
+                        <td>19.99</td>
+                        <td>5</td>
+                        <td><button class="add-btn"><i class="fa-solid fa-plus"></i></button></td>
+                    </tr>
+
+                    <tr>
+                        <td>Angular</td>
+                        <td>29.99</td>
+                        <td>13</td>
+                        <td><button class="add-btn"><i class="fa-solid fa-plus"></i></button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="playlist">
+            <h2>Your playlist</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Index</th>
+                        <th>Title</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>NodeJS</td>
+                        <td>9.99</td>
+                        <td>
+                            <div class="quantity">
+                                <button class="remove-btn"><i class="fa-solid fa-minus"></i></button>
+                                <button class="play-btn"><i class="fa-solid fa-play"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Angular</td>
+                        <td>29.99</td>
+                        <td>
+                            <div class="quantity">
+                                <button class="remove-btn"><i class="fa-solid fa-minus"></i></button>
+                                <button class="play-btn"><i class="fa-solid fa-play"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="play-bar">
+        <div class="text">
+            <h6>Play bar</h6>
+            <p>Login to play song.</p>
+        </div>
+        <div class="button">
+            <button type="button">Login</button>
+        </div>
+    </div>
+</body>
+
+</html>
