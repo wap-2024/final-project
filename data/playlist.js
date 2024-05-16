@@ -1,4 +1,4 @@
-const Playlist = require("../model/Playlist");
+const Playlist = require("../models/Playlist");
 const songs = require("./songs");
 
 // Create a playlist instance
