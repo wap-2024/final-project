@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Website</title>
+    <link rel="stylesheet" href="../public/css/style.css" />
+    <link rel="shortcut icon" href="../public/images/favicon.ico" type="image/x-icon" />
+    <script src="https://kit.fontawesome.com/dd2e270553.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="main-container">
+        <div class="header">
+            <form action="/login" method="POST">
+                <div class="navbar">
+                    <input type="text" name="username" placeholder="Username" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <button type="submit">Login</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="product-list">
+            <h2>Product list</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Stock</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>NodeJS</td>
+                        <td>9.99</td>
+                        <td>8</td>
+                        <td><button><img src="./images/shopping-cart.png" alt="cart"></button></td>
+                    </tr>
+
+                    <tr>
+                        <td>React</td>
+                        <td>19.99</td>
+                        <td>5</td>
+                        <td><button><img src="./images/shopping-cart.png" alt="cart"></button></td>
+                    </tr>
+
+                    <tr>
+                        <td>Angular</td>
+                        <td>29.99</td>
+                        <td>13</td>
+                        <td><button><img src="./images/shopping-cart.png" alt="cart"></button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="cart">
+            <h2>Your shopping cart</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>NodeJS</td>
+                        <td>9.99</td>
+                        <td>9.99</td>
+                        <td>
+                            <div class="quantity">
+                                <button class="decrease">-</button>
+                                <input type="text" placeholder="1">
+                                <button class="increase">+</button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Angular</td>
+                        <td>29.99</td>
+                        <td>290.99</td>
+                        <td>
+                            <div class="quantity">
+                                <button class="decrease">-</button>
+                                <input type="text" placeholder="10">
+                                <button class="increase">+</button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="3"></td>
+                        <td colspan="1" class="total">Total: 300.98</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="place-order"><button>Place Order</button></div>
+    </div>
+</body>
+
+</html>
