@@ -12,6 +12,7 @@
     justify-content: space-between;
     justify-items: center;
     padding: 16px 32px;
+    border-bottom: 1px solid #ddd;
 }
 
 .header .navbar {
@@ -76,6 +77,10 @@
 
 .welcome {
     text-align: center;
+    margin-top: 64px;
+}
+
+.welcome h3 {
     font-size: 30px;
     font-weight: normal;
 }
