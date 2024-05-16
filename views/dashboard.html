@@ -21,7 +21,7 @@
             </div>
         </div>
 
-        <div class="playlist">
+        <div class="list-songs">
             <h2>Song you may interest</h2>
             <table>
                 <thead>
@@ -37,26 +37,27 @@
                         <td>NodeJS</td>
                         <td>9.99</td>
                         <td>8</td>
-                        <td><button><img src="./images/shopping-cart.png" alt="cart"></button></td>
+                        <td><button class="add-btn"><i class="fa-solid fa-plus"></i></button></td>
                     </tr>
 
                     <tr>
                         <td>React</td>
                         <td>19.99</td>
                         <td>5</td>
-                        <td><button><img src="./images/shopping-cart.png" alt="cart"></button></td>
+                        <td><button class="add-btn"><i class="fa-solid fa-plus"></i></button></td>
                     </tr>
 
                     <tr>
                         <td>Angular</td>
                         <td>29.99</td>
                         <td>13</td>
-                        <td><button><img src="./images/shopping-cart.png" alt="cart"></button></td>
+                        <td><button class="add-btn"><i class="fa-solid fa-plus"></i></button></td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <div class="cart">
+
+        <div class="playlist">
             <h2>Your playlist</h2>
             <table>
                 <thead>
@@ -72,9 +73,8 @@
                         <td>9.99</td>
                         <td>
                             <div class="quantity">
-                                <button class="decrease">-</button>
-                                <input type="text" placeholder="1">
-                                <button class="increase">+</button>
+                                <button class="remove-btn"><i class="fa-solid fa-minus"></i></button>
+                                <button class="play-btn"><i class="fa-solid fa-play"></i></button>
                             </div>
                         </td>
                     </tr>
@@ -84,16 +84,24 @@
                         <td>29.99</td>
                         <td>
                             <div class="quantity">
-                                <button class="decrease">-</button>
-                                <input type="text" placeholder="10">
-                                <button class="increase">+</button>
+                                <button class="remove-btn"><i class="fa-solid fa-minus"></i></button>
+                                <button class="play-btn"><i class="fa-solid fa-play"></i></button>
                             </div>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <div class="place-order"><button>Place Order</button></div>
+    </div>
+
+    <div class="play-bar">
+        <div class="text">
+            <h6>Play bar</h6>
+            <p>Login to play song.</p>
+        </div>
+        <div class="button">
+            <button type="button">Login</button>
+        </div>
     </div>
 </body>
 
