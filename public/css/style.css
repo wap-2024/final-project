@@ -32,10 +32,6 @@
     margin-left: 20px;
 }
 
-/* .header .navbar button:hover {
-    background-color: #f2f2f2;
-} */
-
 .header .navbar input[type="text"],
 .header .navbar input[type="password"] {
     width: 100%;
@@ -82,6 +78,12 @@
     text-align: center;
     font-size: 30px;
     font-weight: normal;
+}
+
+.welcome-img img {
+    height: 300px;
+    width: auto;
+    object-fit: cover;
 }
 
 .playlist, .list-songs {
