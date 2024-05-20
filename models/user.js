@@ -24,7 +24,7 @@ module.exports = class User {
     throw new Error('Invalid credentials');
   }
 
-  static logout(userId, {token}) {
+  static logout({userId, token}) {
     const index = users.findIndex((user) => user.id === userId && token === user.token);
     if (index > -1) {
       users[index].token = null;
@@ -45,11 +45,30 @@ module.exports = class User {
     throw new Error('User not found');
   }
 
-  static addPlaylist(playlist) {
-    this.playlists.push(playlist);
+  static addPlaylist(userId, songId) {
+    const userIndex = users.findIndex((user) => user.id === userId);
+    if (userIndex > -1) {
+      const songIndex = users[userIndex].playlists.findIndex((song) => song === songId);
+      if (songIndex > -1) {
+        users[userIndex].playlists[songIndex] = songId;
+      } else {
+        users[userIndex].playlists.push(songId);
+      }
+      return true;
+    }
+    throw new Error('User not found');
   }
 
-  static removePlaylist(playlist) {
-    this.playlists = this.playlists.filter((p) => p !== playlist);
+  static removePlaylist(userId, songId) {
+    const userIndex = users.findIndex((user) => user.id === userId);
+    if (userIndex > -1) {
+      const songIndex = users[userIndex].playlists.findIndex((song) => song === songId);
+      if (songIndex > -1) {
+        users[userIndex].playlists.splice(songIndex, 1);
+        return true;
+      }
+      throw new Error('Song not found');
+    }
+    throw new Error('User not found');
   } 
 }

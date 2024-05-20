@@ -1,6 +1,10 @@
 ###
 GET http://localhost:3000/songs
 
+
+###
+GET http://localhost:3000/songs?keyword=Shape
+
 ###
 GET http://localhost:3000/songs/1
 
