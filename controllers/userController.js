@@ -9,10 +9,19 @@ exports.login = (req, res, next) => {
 }
 
 exports.logout = (req, res, next) => {
-  res.status(200).json({status: true, message: "Logout successful", data: User.logout(parseInt(req.params.uid), req.body)});
+  res.status(200).json({status: true, message: "Logout successful", data: User.logout(req.headers)});
 }
 
 exports.playlists = (req, res, next) => {
   console.log(req.headers.token);
   res.status(200).json({status: true, message: "User playlists", data: User.playlists(parseInt(req.params.userId), req.headers.token)});
+}
+
+exports.addPlaylist = (req, res, next) => {
+  res.status(200).json({status: true, message: "Playlist added", data: User.addPlaylist(parseInt(req.params.userId), parseInt(req.params.songId))});
+}
+
+
+exports.removePlaylist = (req, res, next) => {
+  res.status(200).json({status: true, message: "Playlist removed", data: User.removePlaylist(parseInt(req.params.userId), parseInt(req.params.songId))});
 }

@@ -2,11 +2,13 @@ window.onload = function() {
   const userId = localStorage.getItem("userId");
   const token = localStorage.getItem("token");
   if (userId === undefined || token === undefined) {
-    window.location.href = '/views/login.html';
+    window.location.href = '/views/index.html';
   }
   console.log('Dashboard loaded');
   getDashboard();
   getUserPlaylist(userId, token);
+  userLogout();
+  searchSong();
 }
 
 function getDashboard() {
@@ -43,6 +45,9 @@ function getUserPlaylist(userId, token) {
   
   }).then(response => response.json())
   .then(data => {
+    if (data.data === undefined) {
+      window.location.href = '/views/index.html';
+    }
     console.log(data.data);
     let html = '';
     data.data.forEach(item => {
@@ -50,7 +55,6 @@ function getUserPlaylist(userId, token) {
           <td>${item.id}</td>
           <td>${item.name}</td>
           <td>${item.publishedDate}</td>
-          <td><button class="add-btn"><i class="fa-solid fa-plus"></i></button></td>
           <td>
             <div class="quantity">
               <button class="remove-btn"><i class="fa-solid fa-minus"></i></button>
@@ -61,6 +65,41 @@ function getUserPlaylist(userId, token) {
     });
     // reload table body
     document.getElementById('user-playlist').innerHTML = html;
+  });
+}
+
+function userLogout() {
+  document.getElementById('logout').addEventListener('click', function(e) {
+    e.preventDefault();
+    localStorage.removeItem("userId");
+    localStorage.removeItem("token");
+    window.location.href = '/views/index.html';
+  });
+}
+
+function searchSong() {
+  document.getElementById('search').addEventListener('keyup', function(e) {
+    e.preventDefault();
+    const keyword = document.getElementById('search').value;
+    fetch(`http://localhost:3000/songs?keyword=${keyword}`).then(response => {
+      return response.json()
+    })
+    .then(data => {
+      console.log(data.data);
+      if (data.data === undefined) {
+        return;
+      }
+      let html = '';
+      data.data.forEach(item => {
+        html += `<tr>
+            <td>${item.id}</td>
+            <td>${item.name}</td>
+            <td>${item.publishedDate}</td>
+            <td><button class="add-btn"><i class="fa-solid fa-plus"></i></button></td>
+        </tr>`;
+      });
+      document.getElementById('music-playlist').innerHTML = html;
+    });
   });
 }
 
