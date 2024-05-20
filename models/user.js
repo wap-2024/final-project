@@ -33,7 +33,7 @@ module.exports = class User {
     throw new Error('User not found');
   }
 
-  static playlists(userId, {token}) {
+  static playlists(userId, token) {
     const user = users.find((user) => user.id === userId && token === user.token);
     if (user) {
       const list = [];

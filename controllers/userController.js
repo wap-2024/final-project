@@ -13,5 +13,6 @@ exports.logout = (req, res, next) => {
 }
 
 exports.playlists = (req, res, next) => {
-  res.status(200).json({status: true, message: "User playlists", data: User.playlists(parseInt(req.params.userId), req.body)});
+  console.log(req.headers.token);
+  res.status(200).json({status: true, message: "User playlists", data: User.playlists(parseInt(req.params.userId), req.headers.token)});
 }

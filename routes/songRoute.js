@@ -1,7 +1,12 @@
 const express = require("express");
+const playlists = require("../data/playlists.json");
 const songs = require("../data/songs");
 
 const router = express.Router();
+
+router.get("/", (req, res) => {
+  res.status(200).json({status: "ok", data: playlists});
+});
 
 router.get("/:id", (req, res) => {
   const id = req.params.id;
