@@ -51,6 +51,12 @@ function getUserPlaylist(userId, token) {
           <td>${item.name}</td>
           <td>${item.publishedDate}</td>
           <td><button class="add-btn"><i class="fa-solid fa-plus"></i></button></td>
+          <td>
+            <div class="quantity">
+              <button class="remove-btn"><i class="fa-solid fa-minus"></i></button>
+              <button class="play-btn"><i class="fa-solid fa-play"></i></button>
+            </div>
+          </td>
       </tr>`;
     });
     // reload table body
