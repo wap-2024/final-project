@@ -35,13 +35,13 @@
 
 .header .navbar input[type="text"],
 .header .navbar input[type="password"] {
-    width: 100%;
+    /* width: 100%;
     padding: 12px 30px;
-    border-radius: 40px;
+    border-radius: 40px; */
     box-sizing: border-box;
     margin-left: 20px;
-    font-size: 14px;
-    border: none;
+    /* font-size: 14px;
+    border: none; */
     outline: none;
     display: block;
     width: 100%;
@@ -67,6 +67,10 @@
     border-color: #86b7fe;
     outline: 0;
     box-shadow: 0 0 0 .25rem rgba(13, 110, 253, .25);
+}
+
+#search {
+    min-width: 250px;
 }
 
 .logo img {
