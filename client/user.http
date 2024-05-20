@@ -25,3 +25,8 @@ Content-Type: application/json
 {
    "token": "0.pgv8925nr3a"
 }
+
+
+####
+GET http://localhost:3000/users/4/playlists
+Token:0.t7yvzry9v2
