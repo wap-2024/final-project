@@ -26,7 +26,7 @@ function login() {
           alert('Login successful', data.data);
           localStorage.setItem("userId", data.data.id);
           localStorage.setItem("token", data.data.token);
-          window.location.href = '/views/dashboard.html';
+          window.location.href = '/frontend/views/dashboard.html';
         }
       });
   });

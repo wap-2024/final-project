@@ -4,7 +4,7 @@ window.onload = function() {
   const userId = localStorage.getItem("userId");
   const token = localStorage.getItem("token");
   if (userId === undefined || token === undefined) {
-    window.location.href = '/views/index.html';
+    window.location.href = '/frontend/views/index.html';
   }
   console.log('Dashboard loaded');
   getDashboard();
@@ -53,7 +53,7 @@ function getUserPlaylist(userId, token) {
   }).then(response => response.json())
   .then(data => {
     if (data.data === undefined) {
-      window.location.href = '/views/index.html';
+      window.location.href = '/frontend/views/index.html';
     }
     console.log(data.data);
     let html = '';
