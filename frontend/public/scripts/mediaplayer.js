@@ -119,8 +119,8 @@ audioElement.addEventListener("timeupdate", () => {
 audioElement.addEventListener("loadedmetadata", () => {
   const { src, duration } = audioElement;
   labelTotalTime.innerText = formatTime(duration);
-  labelSongArtist.innerText = this.songs[this.currentIndex].name;
-  labelSongTitle.innerText = this.songs[this.currentIndex].name + " - " + this.songs[this.currentIndex].publishedDate;
+  labelSongArtist.innerText = this.songs && this.songs.length > 0 ? this.songs[this.currentIndex].name : '';
+  labelSongTitle.innerText = this.songs && this.songs.length > 0 ? (this.songs[this.currentIndex].name + " - " + this.songs[this.currentIndex].publishedDate) : '';
 });
 
 audioElement.addEventListener("ended", () => {
