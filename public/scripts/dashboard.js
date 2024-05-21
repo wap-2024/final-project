@@ -1,4 +1,6 @@
+
 window.onload = function() {
+  console.log('Dashboard loaded');
   const userId = localStorage.getItem("userId");
   const token = localStorage.getItem("token");
   if (userId === undefined || token === undefined) {
@@ -11,7 +13,10 @@ window.onload = function() {
   searchSong();
   addPlaylist(userId, token);
   removePlaylist(userId, token);
+
+  
 }
+
 
 function getDashboard() {
   fetch('http://localhost:3000/songs').then(response => {

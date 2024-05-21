@@ -3,60 +3,60 @@
     "id": 1,
     "name": "Shape of You",
     "publishedDate": "2017-01-06",
-    "src": "https://example.com/songs/shape-of-you.mp3"
+    "src": "http://localhost:3000/mp3/the-heart-part-6.mp3"
   },
   {
     "id": 2,
     "name": "Havana",
     "publishedDate": "2017-08-03",
-    "src": "https://example.com/songs/havana.mp3"
+    "src": "http://localhost:3000/mp3/the-heart-part-6.mp3"
   },
   {
     "id": 3,
     "name": "Closer",
     "publishedDate": "2016-07-29",
-    "src": "https://example.com/songs/closer.mp3"
+    "src": "http://localhost:3000/mp3/the-heart-part-6.mp3"
   },
   {
     "id": 4,
     "name": "Uptown Funk",
     "publishedDate": "2014-11-10",
-    "src": "https://example.com/songs/uptown-funk.mp3"
+    "src": "http://localhost:3000/mp3/the-heart-part-6.mp3"
   },
   {
     "id": 5,
     "name": "Despacito",
     "publishedDate": "2017-01-13",
-    "src": "https://example.com/songs/despacito.mp3"
+    "src": "http://localhost:3000/mp3/little-foot-big-foot.mp3"
   },
   {
     "id": 6,
     "name": "Old Town Road",
     "publishedDate": "2019-04-05",
-    "src": "https://example.com/songs/old-town-road.mp3"
+    "src": "http://localhost:3000/mp3/meet-the-grahams.mp3"
   },
   {
     "id": 7,
     "name": "Shape of You (Acoustic)",
     "publishedDate": "2017-01-06",
-    "src": "https://example.com/songs/shape-of-you-acoustic.mp3"
+    "src": "http://localhost:3000/mp3/mockingbird.mp3"
   },
   {
     "id": 8,
     "name": "Someone Like You",
     "publishedDate": "2011-01-24",
-    "src": "https://example.com/songs/someone-like-you.mp3"
+    "src": "http://localhost:3000/mp3/not-like-us.mp3"
   },
   {
     "id": 9,
     "name": "Billie Jean",
     "publishedDate": "1983-01-02",
-    "src": "https://example.com/songs/billie-jean.mp3"
+    "src": "http://localhost:3000/mp3/one-of-wun.mp3"
   },
   {
     "id": 10,
     "name": "Bohemian Rhapsody",
     "publishedDate": "1975-10-31",
-    "src": "https://example.com/songs/bohemian-rhapsody.mp3"
+    "src": "http://localhost:3000/mp3/the-heart-part-6.mp3"
   }
 ]
