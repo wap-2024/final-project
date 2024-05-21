@@ -80,7 +80,7 @@ function userLogout() {
     e.preventDefault();
     localStorage.removeItem("userId");
     localStorage.removeItem("token");
-    window.location.href = '/views/index.html';
+    window.location.href = '/frontend/views/index.html';
   });
 }
 
