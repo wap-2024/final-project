@@ -2,12 +2,12 @@ const users = require("../data/users.json");
 const playList = require("../data/playlists.json");
 
 module.exports = class User {
-  constructor(name, email, password) {
+  constructor(name, email, password, playlists = []) {
     this.name = name;
     this.email = email;
     this.password = password;
     this.token = null;
-    this.playlists = [];
+    this.playlists = playlists;
   }
 
   static getAll() {
