@@ -26,9 +26,8 @@ class MediaController {
   getCurrentSongIndex() {
     return this.currentIndex;
   }
-  getCurrentSongUrl() {
-    console.log(this.songs[this.currentIndex]);
-    return this.songs[this.currentIndex].src;
+  getCurrentSong() {
+    return this.songs[this.currentIndex];
   }
   next() {
     if (this.shuffle) {
@@ -57,15 +56,12 @@ class MediaController {
 }
 
 const mediaPlayer = new MediaController();
-window.onload = function () {
-  mediaPlayer.setSongs([]);
-};
 
 btnPlay.addEventListener("click", () => {
   const { paused, currentTime } = audioElement;
   if (paused) {
     if (currentTime == 0) {
-      audioElement.src = mediaPlayer.getCurrentSongUrl();
+      audioElement.src = mediaPlayer.getCurrentSong().src;
     }
     audioElement.play();
     btnPlay.textContent = "Pause";
@@ -80,7 +76,7 @@ btnForward.addEventListener("click", () => {
     audioElement.pause();
   }
   mediaPlayer.next();
-  audioElement.src = mediaPlayer.getCurrentSongUrl();
+  audioElement.src = mediaPlayer.getCurrentSong().src;
   audioElement.play();
   btnPlay.textContent = "Pause";
 });
@@ -90,7 +86,7 @@ btnBackward.addEventListener("click", () => {
     audioElement.pause();
   }
   mediaPlayer.prev();
-  audioElement.src = mediaPlayer.getCurrentSongUrl();
+  audioElement.src = mediaPlayer.getCurrentSong().src;
   audioElement.play();
   btnPlay.textContent = "Pause";
 });
@@ -119,8 +115,9 @@ audioElement.addEventListener("timeupdate", () => {
 audioElement.addEventListener("loadedmetadata", () => {
   const { src, duration } = audioElement;
   labelTotalTime.innerText = formatTime(duration);
-  labelSongArtist.innerText = this.songs && this.songs.length > 0 ? this.songs[this.currentIndex].name : '';
-  labelSongTitle.innerText = this.songs && this.songs.length > 0 ? (this.songs[this.currentIndex].name + " - " + this.songs[this.currentIndex].publishedDate) : '';
+  console.log(mediaPlayer.getCurrentSong());
+  labelSongArtist.innerText = mediaPlayer.getCurrentSong().artist;
+  labelSongTitle.innerText = mediaPlayer.getCurrentSong().name;
 });
 
 audioElement.addEventListener("ended", () => {
@@ -128,7 +125,7 @@ audioElement.addEventListener("ended", () => {
     audioElement.pause();
   }
   mediaPlayer.next();
-  audioElement.src = mediaPlayer.getCurrentSongUrl();
+  audioElement.src = mediaPlayer.getCurrentSong().src;
   audioElement.play();
   btnPlay.textContent = "Pause";
 });
