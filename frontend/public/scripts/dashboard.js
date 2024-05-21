@@ -71,7 +71,7 @@ function getUserPlaylist(userId, token) {
             </div>
           </td>
       </tr>`;
-      songs.push(item.src);
+      songs.push(item);
     });
     // reload table body
     mediaPlayer.setSongs(songs);
@@ -175,7 +175,7 @@ function removePlaylist(songId) {
           </div>
         </td>
       </tr>`;
-      songs.push(item.src);
+      songs.push(item);
     });
     mediaPlayer.setSongs(songs);
     // reload table body
