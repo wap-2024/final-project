@@ -32,7 +32,7 @@
     "name": "10,000 Hours",
     "artist": "Dan + Shay, Justin Bieber",
     "publishedDate": "2017-01-13",
-    "src": "http://localhost:3000/mp3/little-foot-big-foot.mp3"
+    "src": "http://localhost:3000/mp3/10000-hours.mp3"
   },
   {
     "id": 6,
