@@ -45,8 +45,8 @@ module.exports = class User {
     throw new Error('User not found');
   }
 
-  static addPlaylist(userId, songId) {
-    const userIndex = users.findIndex((user) => user.id === userId);
+  static addPlaylist(userId, songId, token) {
+    const userIndex = users.findIndex((user) => user.id === userId && token === user.token);
     if (userIndex > -1) {
       const songIndex = users[userIndex].playlists.findIndex((song) => song === songId);
       if (songIndex > -1) {
@@ -54,18 +54,26 @@ module.exports = class User {
       } else {
         users[userIndex].playlists.push(songId);
       }
-      return true;
+      const list = [];
+      users[userIndex].playlists.forEach((playlist) => {
+        list.push(playList.find((p) => p.id === playlist));
+      });
+      return list;
     }
     throw new Error('User not found');
   }
 
-  static removePlaylist(userId, songId) {
-    const userIndex = users.findIndex((user) => user.id === userId);
+  static removePlaylist(userId, songId, token) {
+    const userIndex = users.findIndex((user) => user.id === userId && token === user.token);
     if (userIndex > -1) {
       const songIndex = users[userIndex].playlists.findIndex((song) => song === songId);
       if (songIndex > -1) {
         users[userIndex].playlists.splice(songIndex, 1);
-        return true;
+        const list = [];
+        users[userIndex].playlists.forEach((playlist) => {
+          list.push(playList.find((p) => p.id === playlist));
+        });
+        return list;
       }
       throw new Error('Song not found');
     }

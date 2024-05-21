@@ -27,6 +27,7 @@ class MediaController {
     return this.currentIndex;
   }
   getCurrentSongUrl() {
+    console.log(this.songs[this.currentIndex]);
     return this.songs[this.currentIndex];
   }
   next() {
@@ -55,14 +56,17 @@ class MediaController {
   }
 }
 
-let mediaPlayer = new MediaController();
+const mediaPlayer = new MediaController();
 window.onload = function () {
   mediaPlayer.setSongs([
-    "../public/mp3/mockingbird.mp3",
-    "../public/mp3/not-like-us.mp3",
-    "../public/mp3/euphoria.mp3",
+    "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+    "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+    "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+    "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+    "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
   ]);
 };
+
 btnPlay.addEventListener("click", () => {
   const { paused, currentTime } = audioElement;
   if (paused) {
