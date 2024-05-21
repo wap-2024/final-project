@@ -15,6 +15,7 @@ window.onload = function() {
   removePlaylist(userId, token);
 
   
+  console.log(mediaPlayer);
 }
 
 
@@ -57,6 +58,7 @@ function getUserPlaylist(userId, token) {
     }
     console.log(data.data);
     let html = '';
+    let songs = [];
     data.data.forEach(item => {
       html += `<tr>
           <td>${item.id}</td>
@@ -69,8 +71,10 @@ function getUserPlaylist(userId, token) {
             </div>
           </td>
       </tr>`;
+      songs.push(item.src);
     });
     // reload table body
+    mediaPlayer.setSongs(songs);
     document.getElementById('user-playlist').innerHTML = html;
   });
 }
@@ -81,6 +85,7 @@ function userLogout() {
     localStorage.removeItem("userId");
     localStorage.removeItem("token");
     window.location.href = '/frontend/views/index.html';
+    mediaPlayer.setSongs([]);
   });
 }
 
@@ -123,6 +128,7 @@ function addPlaylist(songId) {
   .then(data => {
     console.log(data.data);
     let html = '';
+    let songs = [];
     data.data.forEach(item => {
       html += `<tr>
           <td>${item.id}</td>
@@ -135,8 +141,10 @@ function addPlaylist(songId) {
             </div>
           </td>
       </tr>`;
+      songs.push(item.src);
     });
     // reload table body
+    mediaPlayer.setSongs(songs);
     document.getElementById('user-playlist').innerHTML = html;
   });
 }
@@ -154,6 +162,7 @@ function removePlaylist(songId) {
   .then(data => {
     console.log(data.data);
     let html = '';
+    let songs = [];
     data.data.forEach(item => {
       html += `<tr>
         <td>${item.id}</td>
@@ -166,7 +175,9 @@ function removePlaylist(songId) {
           </div>
         </td>
       </tr>`;
+      songs.push(item.src);
     });
+    mediaPlayer.setSongs(songs);
     // reload table body
     document.getElementById('user-playlist').innerHTML = html;
   });
