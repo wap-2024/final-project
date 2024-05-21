@@ -4,8 +4,9 @@
   "description": "Amazing Music Player Project",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "set PORT=3000 && set NODE_ENV=development && nodemon app.js",
+    "dev": "set PORT=3000 && set NODE_ENV=development && nodemon app.js",
+    "production": "set PORT=3000 && set NODE_ENV=production && nodemon app.js"
   },
   "author": "TDM",
   "license": "ISC",
