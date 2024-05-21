@@ -1,8 +1,8 @@
 const btnPlay = document.getElementById("btn-play");
 const btnBackward = document.getElementById("btn-backward");
-const btnReplay = document.getElementById("btn-replay");
 const btnForward = document.getElementById("btn-forward");
 const btnShuffle = document.getElementById("btn-shuffle");
+const iconMode = document.getElementById("mode-icon");
 const seekBar = document.getElementById("seekBar");
 const labelCurrentTime = document.getElementById("lbl-current-time");
 const labelTotalTime = document.getElementById("lbl-total-time");
@@ -14,15 +14,12 @@ class MediaController {
   constructor() {
     this.songs = [];
     this.currentIndex = 0;
-    this.shuffle = false;
-    this.replay = false;
+    this.mode = 0;
   }
   setSongs(songs) {
     this.songs = songs;
   }
-  isShuffle() {
-    return this.shuffle;
-  }
+
   getCurrentSongIndex() {
     return this.currentIndex;
   }
@@ -30,28 +27,39 @@ class MediaController {
     return this.songs[this.currentIndex];
   }
   next() {
-    if (this.shuffle) {
-      this.currentIndex = Math.floor(Math.random() * this.songs.length);
-    } else if (this.currentIndex + 1 == this.songs.length) {
-      this.currentIndex = this.redo ? 0 : -1;
+    const mode = this.getMode();
+    if (mode == 0) {
+      this.currentIndex = (this.currentIndex + 1) % this.songs.length;
+    } else if (mode == 1) {
     } else {
-      this.currentIndex++;
+      this.currentIndex = Math.floor(Math.random() * this.songs.length);
     }
   }
   prev() {
-    if (this.shuffle) {
-      this.currentIndex = Math.floor(Math.random() * this.songs.length);
-    } else if (this.currentIndex - 1 == -1) {
-      this.currentIndex = this.redo ? this.songs.length - 1 : -1;
+    const mode = this.getMode();
+    if (mode == 0) {
+      const nextIndex =
+        this.currentIndex - 1 == -1
+          ? this.songs.length - 1
+          : this.currentIndex - 1;
+      this.currentIndex = nextIndex;
+    } else if (mode == 1) {
     } else {
-      this.currentIndex--;
+      this.currentIndex = Math.floor(Math.random() * this.songs.length);
     }
   }
-  toggleShuffle() {
-    this.shuffle = !this.shuffle;
+
+  changeMode() {
+    this.mode++;
+    return this.mode % 3;
   }
-  toggleReplay() {
-    this.replay = !this.replay;
+  getMode() {
+    return this.mode % 3;
+  }
+
+  changeSong(songId) {
+    this.currentIndex = this.songs.findIndex((item) => item.id == songId);
+    return this.currentIndex;
   }
 }
 
@@ -92,13 +100,14 @@ btnBackward.addEventListener("click", () => {
 });
 
 btnShuffle.addEventListener("click", () => {
-  mediaPlayer.toggleShuffle();
-  btnShuffle.style.color = mediaPlayer.shuffle ? "red" : "black";
-});
-
-btnReplay.addEventListener("click", () => {
-  mediaPlayer.toggleReplay();
-  btnReplay.style.color = mediaPlayer.replay ? "red" : "black";
+  const mode = mediaPlayer.changeMode();
+  if (mode == 0) {
+    iconMode.className = "fas fa-retweet";
+  } else if (mode == 1) {
+    iconMode.className = "fas fa-repeat-1";
+  } else {
+    iconMode.className = "fas fa-random";
+  }
 });
 
 seekBar.addEventListener("input", () => {
@@ -133,4 +142,14 @@ function formatTime(seconds) {
   const minutes = Math.floor(seconds / 60);
   const secs = Math.floor(seconds % 60);
   return `${minutes}:${secs < 10 ? "0" : ""}${secs}`;
+}
+
+function changeSong(id) {
+  if (audioElement.played) {
+    audioElement.pause();
+  }
+  mediaPlayer.changeSong(id);
+  audioElement.src = mediaPlayer.getCurrentSong().src;
+  audioElement.play();
+  btnPlay.textContent = "Pause";
 }
