@@ -1,20 +1,16 @@
 
 window.onload = function() {
-  console.log('Dashboard loaded');
   const userId = localStorage.getItem("userId");
   const token = localStorage.getItem("token");
   if (userId === undefined || token === undefined) {
     window.location.href = '/frontend/views/index.html';
   }
-  console.log('Dashboard loaded');
   getDashboard();
   getUserPlaylist(userId, token);
   userLogout();
   searchSong();
   addPlaylist(userId, token);
   removePlaylist(userId, token);
-
-  
   console.log(mediaPlayer);
 }
 
@@ -34,7 +30,7 @@ function getDashboard() {
           <td>${item.id}</td>
           <td>${item.name}</td>
           <td>${item.publishedDate}</td>
-          <td><button class="add-btn" onclick="addPlaylist(${item.id});"><i class="fa-solid fa-plus"></i></button></td>
+          <td><button id="add-btn-${item.id}" class="add-btn" onclick="addPlaylist(${item.id});"><i class="fa-solid fa-plus"></i></button></td>
       </tr>`;
     });
     document.getElementById('music-playlist').innerHTML = html;
@@ -49,8 +45,6 @@ function getUserPlaylist(userId, token) {
       'Content-type': `application/json`,
       'Token': token
     },
-
-  
   }).then(response => response.json())
   .then(data => {
     if (data.data === undefined) {
@@ -71,6 +65,7 @@ function getUserPlaylist(userId, token) {
             </div>
           </td>
       </tr>`;
+      document.getElementById(`add-btn-${item.id}`).className = 'add-btn disabledBtn';
       songs.push(item);
     });
     // reload table body
@@ -107,7 +102,7 @@ function searchSong() {
           <td>${item.id}</td>
           <td>${item.name}</td>
           <td>${item.publishedDate}</td>
-          <td><button class="add-btn" onclick="addPlaylist(${item.id});"><i class="fa-solid fa-plus"></i></button></td>
+          <td><button id="add-btn-${item.id}" class="add-btn" onclick="addPlaylist(${item.id});"><i class="fa-solid fa-plus"></i></button></td>
         </tr>`;
       });
       document.getElementById('music-playlist').innerHTML = html;
@@ -141,7 +136,8 @@ function addPlaylist(songId) {
             </div>
           </td>
       </tr>`;
-      songs.push(item.src);
+      document.getElementById(`add-btn-${item.id}`).className = 'add-btn disabledBtn';
+      songs.push(item);
     });
     // reload table body
     mediaPlayer.setSongs(songs);

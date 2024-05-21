@@ -218,7 +218,10 @@ th {
     box-shadow: 0 0 0 .25rem rgba(60, 153, 110, .5);
 }
 
-*:disabled {
-    background-color: #e9ecef;
-    opacity: 1;
+.disabledBtn {
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    opacity: .25;
 }
