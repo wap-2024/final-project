@@ -126,7 +126,8 @@ th {
     background: linear-gradient(to right, #ae2896, #509bf5);
     padding: 15px 40px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    width: 100%;
 }
 
 .play-bar h6 {
