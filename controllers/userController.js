@@ -18,10 +18,10 @@ exports.playlists = (req, res, next) => {
 }
 
 exports.addPlaylist = (req, res, next) => {
-  res.status(200).json({status: true, message: "Playlist added", data: User.addPlaylist(parseInt(req.params.userId), parseInt(req.params.songId))});
+  res.status(200).json({status: true, message: "Playlist added", data: User.addPlaylist(parseInt(req.params.userId), parseInt(req.params.songId), req.headers.token)});
 }
 
 
 exports.removePlaylist = (req, res, next) => {
-  res.status(200).json({status: true, message: "Playlist removed", data: User.removePlaylist(parseInt(req.params.userId), parseInt(req.params.songId))});
+  res.status(200).json({status: true, message: "Playlist removed", data: User.removePlaylist(parseInt(req.params.userId), parseInt(req.params.songId), req.headers.token)});
 }

@@ -11,6 +11,10 @@ app.use(cors());
 app.use("/songs", songRoute);
 app.use('/users', userRoute);
 
+app.use((req, res, next) => {
+  res.status(404).json({ message: "Not found" });
+});
+
 app.use((err, req, res, next) => {
   res.status(500).json({ message: err.message });
 });

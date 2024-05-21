@@ -26,3 +26,12 @@ Content-Type: application/json
 ####
 GET http://localhost:3000/users/4/playlists
 Token:0.t7yvzry9v2
+
+####
+PUT http://localhost:3000/users/4/playlists/1
+Token:0.t7yvzry9v2
+Content-Type: application/json
+
+{
+    "name": "playlist 1"
+}
