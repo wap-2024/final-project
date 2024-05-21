@@ -58,13 +58,7 @@ class MediaController {
 
 const mediaPlayer = new MediaController();
 window.onload = function () {
-  mediaPlayer.setSongs([
-    "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-    "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
-    "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
-    "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
-    "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
-  ]);
+  mediaPlayer.setSongs([]);
 };
 
 btnPlay.addEventListener("click", () => {
