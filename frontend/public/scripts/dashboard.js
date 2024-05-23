@@ -7,8 +7,6 @@ window.onload = function() {
   }
   userLogout();
   searchSong();
-  addPlaylist(userId, token);
-  removePlaylist(userId, token);
   displayDashboard(userId, token);
 }
 
@@ -81,8 +79,16 @@ async function getUserPlaylist(userId, token) {
 }
 
 function userLogout() {
+  const userId = localStorage.getItem("userId");
   document.getElementById("logout").addEventListener("click", function (e) {
     e.preventDefault();
+    fetch(`http://localhost:3000/users/${userId}/logout`, {
+      method: "POST",
+      headers: {
+        "Content-type": `application/json`,
+        Token: localStorage.getItem("token"),
+      },
+    });
     localStorage.removeItem("userId");
     localStorage.removeItem("token");
     window.location.href = "/frontend/views/index.html";

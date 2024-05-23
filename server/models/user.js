@@ -25,7 +25,7 @@ module.exports = class User {
     throw new Error('Your email or password is incorrect');
   }
 
-  static logout({userId, token}) {
+  static logout(userId, {token}) {
     const index = users.findIndex((user) => user.id === userId && token === user.token);
     if (index > -1) {
       users[index].token = null;
