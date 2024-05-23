@@ -18,7 +18,7 @@ module.exports = class User {
   static login({email, password}) {
     const index = users.findIndex((user) => user.email === email && user.password === password);
     if (index > -1) {
-      const token = Math.random().toString(36) + moment().format('*YYYY-MM-DDThh:mm:ss.ms');
+      const token = email + moment().format('*YYYY-MM-DDThh:mm:ss.ms');
       users[index].token = token;
       return users[index];
     }

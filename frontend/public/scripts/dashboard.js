@@ -198,5 +198,6 @@ function removePlaylist(songId) {
       mediaPlayer.setSongs(songs);
       // reload table body
       document.getElementById("user-playlist").innerHTML = html;
+      document.getElementById(`add-btn-${songId}`).classList.remove("disabledBtn");
     });
 }
