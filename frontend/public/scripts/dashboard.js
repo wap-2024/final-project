@@ -5,17 +5,19 @@ window.onload = function() {
   if (userId === undefined || token === undefined) {
     window.location.href = "/frontend/views/index.html";
   }
-  getDashboard();
-  getUserPlaylist(userId, token);
   userLogout();
   searchSong();
   addPlaylist(userId, token);
   removePlaylist(userId, token);
-  console.log(mediaPlayer);
+  displayDashboard(userId, token);
 }
 
+async function displayDashboard(userId, token) {
+  await getDashboard();
+  await getUserPlaylist(userId, token);
+}
 
-function getDashboard() {
+async function getDashboard() {
   fetch("http://localhost:3000/songs")
     .then((response) => {
       return response.json();
@@ -38,7 +40,7 @@ function getDashboard() {
     });
 }
 
-function getUserPlaylist(userId, token) {
+async function getUserPlaylist(userId, token) {
   console.log(userId, token);
   fetch(`http://localhost:3000/users/${userId}/playlists`, {
     method: "GET",
@@ -126,9 +128,6 @@ function addPlaylist(songId) {
     },
   })
     .then((response) => {
-      if (response.status !== 200) {
-        return alert("Failed to add playlist");
-      }
       return response.json();
     })
     .then((data) => {
@@ -170,9 +169,6 @@ function removePlaylist(songId) {
     },
   })
     .then((response) => {
-      if (response.status !== 200) {
-        return alert("Failed to remove playlist");
-      }
       return response.json();
     })
     .then((data) => {
