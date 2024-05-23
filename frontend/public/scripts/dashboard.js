@@ -21,7 +21,7 @@ async function getDashboard() {
       return response.json();
     })
     .then((data) => {
-      console.log(data.data);
+      console.log(data.data, 'GetAllSongs');
       if (data.status === false) {
         return;
       }
@@ -51,7 +51,7 @@ async function getUserPlaylist(userId, token) {
     if (data.status === false) {
       window.location.href = '/frontend/views/index.html';
     }
-    console.log(data.data);
+    console.log(data.data, 'UserPlaylist');
     let html = '';
     let songs = [];
     data.data.forEach(item => {
@@ -60,7 +60,7 @@ async function getUserPlaylist(userId, token) {
           <td>${item.name}</td>
           <td>${item.publishedDate}</td>
           <td>
-            <div class="quantity">
+            <div id="songAction${item.id}">
               <button class="remove-btn" onclick="removePlaylist(${item.id});"><i class="fa-solid fa-minus"></i></button>
               <button class="play-btn" onclick="changeSong(${item.id});"><i class="fa-solid fa-play"></i></button>
             </div>
@@ -111,11 +111,16 @@ function searchSong() {
         }
         let html = "";
         data.data.forEach((item) => {
+          const songAction = document.getElementById(`songAction${item.id}`);
+          let disabledBtn = '';
+          if (songAction) {
+            disabledBtn = "disabledBtn";
+          }
           html += `<tr>
           <td>${item.id}</td>
           <td>${item.name}</td>
           <td>${item.publishedDate}</td>
-          <td><button id="add-btn-${item.id}" class="add-btn" onclick="addPlaylist(${item.id});"><i class="fa-solid fa-plus"></i></button></td>
+          <td><button id="add-btn-${item.id}" class="add-btn ${disabledBtn}" onclick="addPlaylist(${item.id});"><i class="fa-solid fa-plus"></i></button></td>
         </tr>`;
         });
         document.getElementById("music-playlist").innerHTML = html;
@@ -146,7 +151,7 @@ function addPlaylist(songId) {
           <td>${item.name}</td>
           <td>${item.publishedDate}</td>
           <td>
-            <div class="quantity">
+            <div id="songAction${item.id}">
               <button class="remove-btn" onclick="removePlaylist(${item.id});"><i class="fa-solid fa-minus"></i></button>
               <button class="play-btn" onclick="changeSong(${item.id});"><i class="fa-solid fa-play"></i></button>
             </div>
@@ -178,7 +183,7 @@ function removePlaylist(songId) {
       return response.json();
     })
     .then((data) => {
-      console.log(data.data);
+      console.log(data.data, 'removePlaylist');
       let html = "";
       let songs = [];
       data.data.forEach((item) => {
@@ -187,7 +192,7 @@ function removePlaylist(songId) {
         <td>${item.name}</td>
         <td>${item.publishedDate}</td>
         <td>
-          <div class="quantity">
+          <div id="songAction${item.id}">
             <button class="remove-btn" onclick="removePlaylist(${item.id});"><i class="fa-solid fa-minus"></i></button>
             <button class="play-btn" onclick="changeSong(${item.id});"><i class="fa-solid fa-play"></i></button>
           </div>
@@ -198,6 +203,9 @@ function removePlaylist(songId) {
       mediaPlayer.setSongs(songs);
       // reload table body
       document.getElementById("user-playlist").innerHTML = html;
-      document.getElementById(`add-btn-${songId}`).classList.remove("disabledBtn");
+      let element = document.getElementById(`add-btn-${songId}`);
+      if (element.classList.contains("disabledBtn")) {
+          element.classList.remove("disabledBtn");
+      }
     });
 }
