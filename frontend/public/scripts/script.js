@@ -19,9 +19,10 @@ function login() {
       body: JSON.stringify({ email, password })
     }).then(response => response.json())
       .then(data => {
-        // console.log(data);
-        if (data.error) {
-          alert(data.error);
+        console.log(data, data.status);
+        if (data.status === false) {
+          alert("Your email or password is incorrect. Please try again.");
+          return;
         } else {
           alert('Login successful', data.data);
           localStorage.setItem("userId", data.data.id);
