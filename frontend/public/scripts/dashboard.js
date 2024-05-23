@@ -7,8 +7,6 @@ window.onload = function() {
   }
   userLogout();
   searchSong();
-  // addPlaylist(userId, token);
-  // removePlaylist(userId, token);
   displayDashboard(userId, token);
 }
 
