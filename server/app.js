@@ -20,7 +20,7 @@ app.use((req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
-  if (err.message === "Invalid credentials" || err.message.includes("not found")) {
+  if (err.message === "is incorrect" || err.message.includes("not found")) {
     return res.status(401).json({status: false, message: err.message });
   }
   res.status(500).json({status: false, message: err.message });
