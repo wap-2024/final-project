@@ -87,7 +87,7 @@ btnForward.addEventListener("click", () => {
   mediaPlayer.next();
   audioElement.src = mediaPlayer.getCurrentSong().src;
   audioElement.play();
-  btnPlay.textContent = "Pause";
+  playIcon.className = "fas fa-pause";
 });
 
 btnBackward.addEventListener("click", () => {
@@ -97,7 +97,7 @@ btnBackward.addEventListener("click", () => {
   mediaPlayer.prev();
   audioElement.src = mediaPlayer.getCurrentSong().src;
   audioElement.play();
-  btnPlay.textContent = "Pause";
+  playIcon.className = "fas fa-pause";
 });
 
 btnShuffle.addEventListener("click", () => {
@@ -137,7 +137,7 @@ audioElement.addEventListener("ended", () => {
   mediaPlayer.next();
   audioElement.src = mediaPlayer.getCurrentSong().src;
   audioElement.play();
-  btnPlay.textContent = "Pause";
+  playIcon.className = "fas fa-pause";
 });
 function formatTime(seconds) {
   const minutes = Math.floor(seconds / 60);
@@ -152,5 +152,5 @@ function changeSong(id) {
   mediaPlayer.changeSong(id);
   audioElement.src = mediaPlayer.getCurrentSong().src;
   audioElement.play();
-  btnPlay.textContent = "Pause";
+  playIcon.className = "fas fa-pause";
 }
