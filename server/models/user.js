@@ -1,4 +1,5 @@
 const users = require("../data/users.json");
+const moment = require('moment');
 const playList = require("../data/playlists.json");
 
 module.exports = class User {
@@ -17,11 +18,11 @@ module.exports = class User {
   static login({email, password}) {
     const index = users.findIndex((user) => user.email === email && user.password === password);
     if (index > -1) {
-      const token = Math.random().toString(36);
+      const token = Math.random().toString(36) + moment().format('*YYYY-MM-DDThh:mm:ss.ms');
       users[index].token = token;
       return users[index];
     }
-    throw new Error('Invalid credentials');
+    throw new Error('Your email or password is incorrect');
   }
 
   static logout({userId, token}) {
