@@ -10,7 +10,7 @@ Content-Type: application/json
 }
 
 #####
-GET http://localhost:3000/4/users/logout
+POST http://localhost:3000/4/users/logout
 Token:0.t7yvzry9v2
 
 

@@ -1,11 +1,11 @@
 const playlists = require('../data/playlists.json');
 
 class Song {
-  constructor(id, title, artis, releaseDate, src) {
+  constructor(id, title, artist, publishedDate, src) {
     this.id = id;
     this.title = title;
-    this.artis = artis;
-    this.releaseDate = releaseDate;
+    this.artist = artist;
+    this.publishedDate = publishedDate;
     this.src = src;
   }
 
@@ -17,19 +17,19 @@ class Song {
     return songs;
   }
 
-  static add({title, artis, releaseDate, src}) {
+  static add({title, artist, publishedDate, src}) {
     const id = playlists.length + 1;
-    const song = new Song(id, title, artis, releaseDate, src);
+    const song = new Song(id, title, artist, publishedDate, src);
     playlists.push(song);
     return song;
   }
 
-  static update(id, {title, artis, releaseDate, src}) {
+  static update(id, {title, artist, publishedDate, src}) {
     const index = playlists.findIndex((song) => song.id == id);
     if (index > -1) {
       playlists[index].title = title;
-      playlists[index].artis = artis;
-      playlists[index].releaseDate = releaseDate;
+      playlists[index].artist = artist;
+      playlists[index].publishedDate = publishedDate;
       playlists[index].src = src;
       return playlists[index];
     }

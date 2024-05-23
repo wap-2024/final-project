@@ -9,7 +9,7 @@ exports.login = (req, res, next) => {
 }
 
 exports.logout = (req, res, next) => {
-  res.status(200).json({status: true, message: "Logout successful", data: User.logout(req.headers)});
+  res.status(200).json({status: true, message: "Logout successful", data: User.logout(parseInt(req.params.userId), req.headers)});
 }
 
 exports.playlists = (req, res, next) => {
