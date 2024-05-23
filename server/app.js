@@ -20,7 +20,10 @@ app.use((req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
-  res.status(500).json({ message: err.message });
+  if (err.message === "Invalid credentials" || err.message.includes("not found")) {
+    return res.status(401).json({status: false, message: err.message });
+  }
+  res.status(500).json({status: false, message: err.message });
 });
 
 app.listen(PORT, () => {
