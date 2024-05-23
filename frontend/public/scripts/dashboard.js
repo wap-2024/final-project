@@ -22,7 +22,7 @@ function getDashboard() {
     })
     .then((data) => {
       console.log(data.data);
-      if (data.data === undefined) {
+      if (data.status === false) {
         return;
       }
       let html = "";
@@ -48,7 +48,7 @@ function getUserPlaylist(userId, token) {
     },
   }).then(response => response.json())
   .then(data => {
-    if (data.data === undefined) {
+    if (data.status === false) {
       window.location.href = '/frontend/views/index.html';
     }
     console.log(data.data);
@@ -66,7 +66,11 @@ function getUserPlaylist(userId, token) {
             </div>
           </td>
       </tr>`;
-      document.getElementById(`add-btn-${item.id}`).className = 'add-btn disabledBtn';
+      const addBtn = document.getElementById(`add-btn-${item.id}`);
+      if (addBtn) {
+        addBtn.className = 'add-btn disabledBtn';
+      }
+      // document.getElementById(`add-btn-${item.id}`).className = 'add-btn disabledBtn';
       songs.push(item);
     });
     // reload table body
@@ -95,7 +99,7 @@ function searchSong() {
       })
       .then((data) => {
         console.log(data.data);
-        if (data.data === undefined) {
+        if (data.status === false) {
           return;
         }
         let html = "";
@@ -139,7 +143,10 @@ function addPlaylist(songId) {
             </div>
           </td>
       </tr>`;
-      document.getElementById(`add-btn-${item.id}`).className = 'add-btn disabledBtn';
+      const addBtn = document.getElementById(`add-btn-${item.id}`);
+      if (addBtn) {
+        addBtn.className = 'add-btn disabledBtn';
+      }
       songs.push(item);
     });
     // reload table body
