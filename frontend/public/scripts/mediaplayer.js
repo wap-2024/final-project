@@ -3,6 +3,7 @@ const btnBackward = document.getElementById("btn-backward");
 const btnForward = document.getElementById("btn-forward");
 const btnShuffle = document.getElementById("btn-shuffle");
 const iconMode = document.getElementById("mode-icon");
+const playIcon = document.getElementById("play-icon");
 const seekBar = document.getElementById("seekBar");
 const labelCurrentTime = document.getElementById("lbl-current-time");
 const labelTotalTime = document.getElementById("lbl-total-time");
@@ -72,10 +73,10 @@ btnPlay.addEventListener("click", () => {
       audioElement.src = mediaPlayer.getCurrentSong().src;
     }
     audioElement.play();
-    btnPlay.textContent = "Pause";
+    playIcon.className = "fas fa-pause";
   } else {
     audioElement.pause();
-    btnPlay.textContent = "Play";
+    playIcon.className = "fas fa-play";
   }
 });
 

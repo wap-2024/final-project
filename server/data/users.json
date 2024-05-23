@@ -18,9 +18,9 @@
   {
     "id": 3,
     "name": "Dan Doe",
-    "email": "aaa@gmai.com",
+    "email": "aaa@gmail.com",
     "password": "123456",
-    "playlists": [],
+    "playlists": [1, 4, 5],
     "token": ""
   },
   {
