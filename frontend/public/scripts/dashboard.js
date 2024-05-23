@@ -70,7 +70,6 @@ function getUserPlaylist(userId, token) {
       if (addBtn) {
         addBtn.className = 'add-btn disabledBtn';
       }
-      // document.getElementById(`add-btn-${item.id}`).className = 'add-btn disabledBtn';
       songs.push(item);
     });
     // reload table body
@@ -126,7 +125,12 @@ function addPlaylist(songId) {
       Token: token,
     },
   })
-    .then((response) => response.json())
+    .then((response) => {
+      if (response.status !== 200) {
+        return alert("Failed to add playlist");
+      }
+      return response.json();
+    })
     .then((data) => {
       console.log(data.data);
       let html = "";
@@ -165,7 +169,12 @@ function removePlaylist(songId) {
       Token: token,
     },
   })
-    .then((response) => response.json())
+    .then((response) => {
+      if (response.status !== 200) {
+        return alert("Failed to remove playlist");
+      }
+      return response.json();
+    })
     .then((data) => {
       console.log(data.data);
       let html = "";

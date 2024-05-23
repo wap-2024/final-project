@@ -51,7 +51,7 @@ module.exports = class User {
     if (userIndex > -1) {
       const songIndex = users[userIndex].playlists.findIndex((song) => song === songId);
       if (songIndex > -1) {
-        users[userIndex].playlists[songIndex] = songId;
+        throw new Error('Song already in the playlist');
       } else {
         users[userIndex].playlists.push(songId);
       }
